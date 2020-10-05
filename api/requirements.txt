@@ -1,0 +1,3 @@
+flask
+instagram_web_api
+requests
