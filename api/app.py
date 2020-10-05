@@ -6,7 +6,7 @@ from requests import get
 app = Flask(__name__)
 
 @app.route("/search-user")
-def index():
+def search_user():
     user = request.args.get('user')
     user_search_url = 'https://www.instagram.com/web/search/topsearch/?query='
     response = get(user_search_url + user).json()
