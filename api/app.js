@@ -6,21 +6,19 @@ const app = express();
 
 // get user data
 app.get('/api', (req, res) => {
-
-  const baseUrl = 'graph.facebook.com'
+  const baseUrl = 'graph.facebook.com';
 
   // chamada externa para a api
 
   // pega os dados e retorna para o front
   res.status(200).send({
     success: 'true',
-    message: 'ok'
-  })
+    message: 'Add o nodemon',
+  });
 });
-
 
 const PORT = 5000;
 
 app.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`)
+  console.log(`server running on port ${PORT}`);
 });
