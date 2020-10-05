@@ -10,12 +10,18 @@ def index():
     user = request.args.get('user')
     user_search_url = 'https://www.instagram.com/web/search/topsearch/?query='
     response = get(user_search_url + user).json()
-    
+
     data = {
-        'userName': response['users'][0]['user']['username'],
-        'userId': response['users'][0]['user']['pk'],
-        'profileImage': response['users'][0]['user']['profile_pic_url']
+        'success': False
     }
+
+    if len(response['users']) > 0:
+        data = {
+            'success': True,
+            'userName': response['users'][0]['user']['username'],
+            'userId': response['users'][0]['user']['pk'],
+            'profileImage': response['users'][0]['user']['profile_pic_url']
+        }
 
     return data
 
