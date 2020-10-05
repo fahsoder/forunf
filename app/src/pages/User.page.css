@@ -1,0 +1,53 @@
+html, body, p {
+    margin: 0;
+    padding: 0;
+}
+
+.userPageContainer {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: #282c34;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.userPageSearchLabel {
+    padding-bottom: 10px;
+}
+
+.userPageSearchInput {
+    padding: 10px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.userPageSearchSubmit {
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    background-color: transparent;
+}
+
+.userPageSearchSubmit:hover {
+    background-color: white;
+    color: #282c34;
+    border: 1px solid black;
+    cursor: pointer;
+}
