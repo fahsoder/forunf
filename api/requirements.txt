@@ -1,3 +1,8 @@
-flask
-instagram_web_api
-requests
+install python 3.8
+
+install pip
+python get-pip.py
+
+pip install flask
+pip install git+https://git@github.com/ping/instagram_private_api.git@1.6.0
+pip install requests
