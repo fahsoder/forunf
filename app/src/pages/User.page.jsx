@@ -10,7 +10,7 @@ const User = props => {
 
     const renderSearch = () => {
         return (
-            <div className='searchContainer'>
+            <div className='userPageSearchContainer'>
                 <label className='userPageSearchLabel'>Nome de usuário</label>
                 <input type='text' name='userSearch' className='userPageSearchInput' placeholder='@fahsoder' />
                 <button className='userPageSearchSubmit' onClick={onsubmit}>Buscar</button>
