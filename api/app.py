@@ -2,8 +2,10 @@ from flask import Flask
 from flask import request
 from instagram_web_api import Client, ClientCompatPatch, ClientError, ClientLoginError
 from requests import get
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/search-user")
 def search_user():

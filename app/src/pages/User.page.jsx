@@ -1,17 +1,51 @@
 import React, { useState } from 'react';
-import Api from '../services/Api';
+import Api from '../services/api';
 
 import './User.page.css';
 
 const User = () => {
   const [name, setName] = useState('');
-  const [image] = useState('');
+  const [userId, setUserId] = useState('');
+  const [image, setImage] = useState('');
+  const [hasUserInfo, setHasUserInfo] = useState(false);
 
   const onSubmit = () => {
-    Api.get(`search-user?user=${name}`).then((response) =>
-      console.log(response)
-    );
+    Api.get(`search-user?user=${name}`).then((response) => {
+      if (response.data.success) {
+        setUserId(response.data.userId)
+        setImage(response.data.profileImage)
+      }
+      setHasUserInfo(response.data.success)
+    });
   };
+
+  const confirmUser = () => {
+    // Buscar informações de seguidores na API
+    // localhost:5000/get-user-info?userId=${userId}
+    return
+  }
+
+  const doNotConfirmUser = () => {
+    // Buscar o próximo usuário
+    // chamar o endpoint do onSubmit novamente com um parâmetro a mais
+    // search-user?user=${name}&page=1
+    return
+  }
+
+  const renderUserInfo = () => {
+    if (hasUserInfo) {
+      return (
+        <div className="userPageInfoContainer">
+          <p className="userPageUserName">Nome de usuário: {name}</p>
+          <img src={image} className="userPageUserImage" />
+          <p className="userPageConfirmText">Você é este usuário?</p>
+          <button className="userPageConfirmUser" onClick={confirmUser}>Confirmar</button>
+          <button className="userPageDoNotConfirmUser" onClick={doNotConfirmUser}>Não</button>
+        </div>
+      )
+    }
+    return
+  }
 
   const renderSearch = () => {
     return (
@@ -28,7 +62,7 @@ const User = () => {
         <button className="userPageSearchSubmit" onClick={onSubmit}>
           Buscar
         </button>
-        {image ? image : 'SEM IMAGEM'}
+        {renderUserInfo()}
       </div>
     );
   };
