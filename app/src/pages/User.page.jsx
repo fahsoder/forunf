@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import Api from '../services/Api';
 
 import './User.page.css';
 
-const User = (props) => {
+const User = () => {
   const [name, setName] = useState('');
+  const [image] = useState('');
 
-  const onsubmit = () => {
-    alert(`Nome informado: ${name}`);
+  const onSubmit = () => {
+    Api.get(`search-user?user=${name}`).then((response) =>
+      console.log(response)
+    );
   };
 
   const renderSearch = () => {
@@ -21,9 +25,10 @@ const User = (props) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <button className="userPageSearchSubmit" onClick={onsubmit}>
+        <button className="userPageSearchSubmit" onClick={onSubmit}>
           Buscar
         </button>
+        {image ? image : 'SEM IMAGEM'}
       </div>
     );
   };
