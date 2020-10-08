@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Api from '../services/api';
+import Api from '../../services/api';
 
 import './User.page.css';
 
@@ -12,25 +12,25 @@ const User = () => {
   const onSubmit = () => {
     Api.get(`search-user?user=${name}`).then((response) => {
       if (response.data.success) {
-        setUserId(response.data.userId)
-        setImage(response.data.profileImage)
+        setUserId(response.data.userId);
+        setImage(response.data.profileImage);
       }
-      setHasUserInfo(response.data.success)
+      setHasUserInfo(response.data.success);
     });
   };
 
   const confirmUser = () => {
     // Buscar informações de seguidores na API
     // localhost:5000/get-user-info?userId=${userId}
-    return
-  }
+    return;
+  };
 
   const doNotConfirmUser = () => {
     // Buscar o próximo usuário
     // chamar o endpoint do onSubmit novamente com um parâmetro a mais
     // search-user?user=${name}&page=1
-    return
-  }
+    return;
+  };
 
   const renderUserInfo = () => {
     if (hasUserInfo) {
@@ -39,17 +39,30 @@ const User = () => {
           <p className="userPageUserName">Nome de usuário: {name}</p>
           <img src={image} className="userPageUserImage" />
           <p className="userPageConfirmText">Você é este usuário?</p>
-          <button className="userPageConfirmUser" onClick={confirmUser}>Confirmar</button>
-          <button className="userPageDoNotConfirmUser" onClick={doNotConfirmUser}>Não</button>
+          <button className="userPageConfirmUser" onClick={confirmUser}>
+            Confirmar
+          </button>
+          <button
+            className="userPageDoNotConfirmUser"
+            onClick={doNotConfirmUser}
+          >
+            Não
+          </button>
         </div>
-      )
+      );
     }
-    return
-  }
+    return;
+  };
 
   const renderSearch = () => {
     return (
       <div className="userPageSearchContainer">
+        <h1 className="userPageTitle"> FORUNF</h1>
+        <p>
+          {' '}
+          Linkar está paginda com a UserInfo.Page e apresentar informalçoes do
+          Usuário
+        </p>
         <label className="userPageSearchLabel">Nome de usuário</label>
         <input
           type="text"
