@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 import Api from '../../services/api';
 
 import './User.page.css';
+
+import UserInfo from '../UserInfo/UserInfo.page'
 
 const User = () => {
   const [name, setName] = useState('');
@@ -22,6 +25,9 @@ const User = () => {
   const confirmUser = () => {
     // Buscar informações de seguidores na API
     // localhost:5000/get-user-info?userId=${userId}
+    Api.get(`get-user-info2?userId=${userId}`).then((response) =>{
+      console.log(response.data);
+    })
     return;
   };
 
@@ -38,6 +44,16 @@ const User = () => {
         <div className="userPageInfoContainer">
           <p className="userPageUserName">{name}</p>
           <img src={image} className="userPageUserImage" />
+
+          <button>
+            <Link to="/user/info">
+            Sim
+            </Link>
+          </button>
+
+          <button>
+            Não
+          </button>
         </div>
       );
     }
@@ -65,6 +81,8 @@ const User = () => {
       </div>
     );
   };
+
+  
 
   return <div className="userPageContainer">{renderSearch()}</div>;
 };
