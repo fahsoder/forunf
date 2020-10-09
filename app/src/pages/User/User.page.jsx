@@ -36,18 +36,8 @@ const User = () => {
     if (hasUserInfo) {
       return (
         <div className="userPageInfoContainer">
-          <p className="userPageUserName">Nome de usuário: {name}</p>
+          <p className="userPageUserName">{name}</p>
           <img src={image} className="userPageUserImage" />
-          <p className="userPageConfirmText">Você é este usuário?</p>
-          <button className="userPageConfirmUser" onClick={confirmUser}>
-            Confirmar
-          </button>
-          <button
-            className="userPageDoNotConfirmUser"
-            onClick={doNotConfirmUser}
-          >
-            Não
-          </button>
         </div>
       );
     }
@@ -57,22 +47,18 @@ const User = () => {
   const renderSearch = () => {
     return (
       <div className="userPageSearchContainer">
-        <h1 className="userPageTitle"> FORUNF</h1>
-        <p>
-          {' '}
-          Linkar está paginda com a UserInfo.Page e apresentar informalçoes do
-          Usuário
-        </p>
-        <label className="userPageSearchLabel">Nome de usuário</label>
+        <div className="userPageLogoContainer">
+          <img id="logo" />
+        </div>
         <input
           type="text"
           name="userSearch"
           className="userPageSearchInput"
-          placeholder="@fahsoder"
+          placeholder="Nome de usuário"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <button className="userPageSearchSubmit" onClick={onSubmit}>
+        <button className="userPageSubmit" onClick={onSubmit}>
           Buscar
         </button>
         {renderUserInfo()}

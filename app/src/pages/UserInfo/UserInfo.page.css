@@ -4,12 +4,6 @@ p {
   margin: 0;
   padding: 0;
 }
-button {
-  width: 160px;
-  height: 40px;
-  margin: 30px 30px;
-  border-radius: 10px;
-}
 
 .userInfoPageContainer {
   width: 100vw;

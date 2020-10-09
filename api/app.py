@@ -9,21 +9,25 @@ CORS(app)
 
 @app.route("/search-user")
 def search_user():
-    user = request.args.get('user')
+    username = request.args.get('user')
     user_search_url = 'https://www.instagram.com/web/search/topsearch/?query='
-    response = get(user_search_url + user).json()
+    response = get(user_search_url + username).json()
 
     data = {
         'success': False
     }
 
     if len(response['users']) > 0:
-        data = {
-            'success': True,
-            'userName': response['users'][0]['user']['username'],
-            'userId': response['users'][0]['user']['pk'],
-            'profileImage': response['users'][0]['user']['profile_pic_url']
-        }
+        for user in response['users']:
+            user = user['user']
+            if user['username'] == username:
+                data = {
+                    'success': True,
+                    'userName': user['username'],
+                    'userId': user['pk'],
+                    'profileImage': user['profile_pic_url']
+                }
+            break
 
     return data
 

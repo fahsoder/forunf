@@ -1,3 +1,4 @@
 flask
 instagram_web_api
 requests
+pip install -U flask-cors
